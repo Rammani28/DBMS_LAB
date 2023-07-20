@@ -256,9 +256,54 @@ set salary = salary*1.1
 update book
 set bname='mathematics' where bname='math'
 
---9 update teh salary of all employee by 20% whose salary is less than 10000
+--9 update the salary of all employee by 20% whose salary is less than 10000
 update employee
 set salary=salary*1.2 where salary < 10000
+
+
+--10
+update employee
+set salary = case when salary >20000 then salary*1.05
+				  else salary * 1.2
+end;
+
+--11
+--delete record from employee teable whose eid is 4
+delete from Employee where eid=3;
+select * from employee
+select * from booklist
+
+--12 use sub query to find all teacher name and faculty whose date of empl9yee is jan 2 2011
+select name, faculty from teacher where eid in (select eid from employee where dateofemploy='2010-1-1')
+
+--13 use sub query to fifnd all the book mane and author name whose publication is puspa
+select bname, author from book where bid in (select bid from booklist where publication = 'stanford')
+
+-------------------------------------------------------------------------------------------------
+--------------------------------------LAB 4------------------------------------------------------
+-------------------------------------------------------------------------------------------------
+--q1
+SELECT * FROM employee ORDER BY Salary DESC;
+
+--q2
+select * from booklist order by bname, publication
+
+--q3
+select top 3 * from teacher
+
+--q4
+select sum(salary) from employee;
+
+--q5
+select min(salary) from employee;
+
+--q6
+
+select author, avg(price) as average from book group by author
+
+
+
+
 
 
 
