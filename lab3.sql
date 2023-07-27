@@ -298,17 +298,32 @@ select sum(salary) from employee;
 select min(salary) from employee;
 
 --q6
-
 select author, avg(price) as average from book group by author
 
+--q7
+select publication, count(*) as countNum from booklist group by publication
+
+--8
+select bid, bname from book where price > (select avg(price) from book);
+
+--9
+select bid, bname, author from book where author like 's%' order by author
+
+--10
+select teacher.name, issues.name from teacher, issues, employee where issues.tid = teacher.tid and employee.eid = teacher.eid and employee.salary in (select max(salary) from employee)
+
+--11
+select * from book
+
+update book
+set author = 'SA' where bid = 4
+
+select author from book group by author having count(*) > 1
 
 
-
-
-
-
-
-
+----------------------------lab 5----------------------------------
+--1
+select employee.name, teacher.salary, teacher.salary
 
 
 
